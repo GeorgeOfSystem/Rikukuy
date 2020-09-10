@@ -1,5 +1,6 @@
 .intro-header {
   height: unset !important;
+  background-color: rgb(48, 47, 47);
 }
 .top-nav-collapse {
   background-color: #78909c !important;
@@ -20,6 +21,10 @@ h1 {
 }
 h5 {
   letter-spacing: 3px;
+  color: #fff;
+}
+h2{
+  color: rgb(88, 132, 161);
 }
 .hr-light {
   border-top: 3px solid #fff;
