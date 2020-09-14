@@ -40,9 +40,6 @@
               <h5 class="font-up mb-5 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Photography &
                   design</strong></h5>
               <a mdbBtn color="white" outline="true" class="wow fadeInDown waves-light" data-wow-delay="0.4s"
-                mdbWavesEffect> Login </a>
-                <a> -- </a>
-              <a mdbBtn color="white" outline="true" class="wow fadeInDown waves-light" data-wow-delay="0.4s"
                 mdbWavesEffect>About me</a>
             </div>
           </div>
@@ -50,6 +47,11 @@
       </div>
     </div>
   </div>
- <button routerLink="/home"> This button Login Works </button>
 </header>
-<!--Main Navigation-->
+<button mat-mini-fab [ngStyle]="{'background': 'rgb(66, 103, 178'}" routerLink="/home">
+<mat-icon>facebook</mat-icon>
+</button>
+<button mat-mini-fab [ngStyle]="{'background': 'rgb(219, 68, 55'}" routerLink="/home">
+<mat-icon>email</mat-icon>
+</button>
+    <!-- [formGroup]="productForm" style="display: flex; flex-direction: column; padding: 20px;" -->
