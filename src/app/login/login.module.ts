@@ -11,7 +11,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
-import { AngularFireAuth } from '@angular/fire/auth/auth';
 
 
 
@@ -29,7 +28,6 @@ import { AngularFireAuth } from '@angular/fire/auth/auth';
     MatFormFieldModule,
     MatInputModule,
   ],
-  providers: [AuthentificationService,AngularFireAuth],
   declarations: [LoginComponent]
 })
 export class LoginModule { }
