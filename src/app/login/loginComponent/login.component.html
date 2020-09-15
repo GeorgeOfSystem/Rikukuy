@@ -1,3 +1,4 @@
+
 <!--Main Navigation-->
 <header class="intro-header">
 
@@ -35,12 +36,63 @@
         <div class="row pt-5 mt-3 w-100">
           <div class="col-md-12">
             <div class="text-center">
-              <h2 class="h1 h1-reponsive white-text font-up font-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong> Nicole & George Website</strong></h2>
+              
+              <h2 class="h1 h1-reponsive white-text font-up font-bold mb-3 wow fadeInDown" data-wow-delay="0.3s">
+                <strong> Nicole & George Website</strong>
+              </h2>
+
               <hr class="hr-light mt-4 wow fadeInDown" data-wow-delay="0.4s">
-              <h5 class="font-up mb-5 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Photography &
-                  design</strong></h5>
-              <a mdbBtn color="white" outline="true" class="wow fadeInDown waves-light" data-wow-delay="0.4s"
-                mdbWavesEffect>About me</a>
+                <h5 class="font-up mb-5 white-text wow fadeInDown" data-wow-delay="0.4s">
+                  <strong>Photography & design</strong>
+                </h5>
+              
+              <div class="example-sidenav-content">
+                <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
+                  <form [formGroup]="userForm">
+                  <div style="display: flex; flex-direction: column; padding: 20px;">
+                    <!-- Email -->
+                    <mat-form-field>
+                      <mat-label> Email </mat-label>
+                      <input matInput formControlName="email" type="text">
+                    </mat-form-field>
+                    <!-- Email verification -->
+                    <div *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty)" class="alert alert-danger">
+                      <div *ngIf="userForm.get('email').errors.required">
+                        Email is required
+                      </div>
+                    </div>
+
+                    <!-- Password -->
+                    <mat-form-field>
+                        <mat-label > Password </mat-label>
+                        <input matInput formControlName="password" type="password">
+                    </mat-form-field>
+                    <!-- Password verification -->
+                    <div *ngIf="userForm.get('password').invalid &&
+                              (userForm.get('password').touched ||
+                              userForm.get('password').dirty)"
+                          class="alert alert-danger">
+                      <div *ngIf="userForm.get('password').errors.required">
+                          Password is required
+                      </div>
+                    </div>
+                  </div>
+                  <!-- facebook button -->
+                  <button mat-mini-fab [ngStyle]="{'background': 'rgb(66, 103, 178'}" >
+                    <mat-icon>facebook</mat-icon>
+                  </button>
+                  <!-- Google button -->
+                  <button mat-mini-fab [ngStyle]="{'background': 'rgb(219, 68, 55'}" routerLink="/home">
+                    <mat-icon>email</mat-icon>
+                  </button>
+                  </form>
+                </mat-drawer>
+              </div>
+
+              <a mdbBtn color="white" outline="true" class="wow fadeInDown waves-light" data-wow-delay="0.4s" mdbWavesEffect (click)="drawer.toggle()"> Login </a>
+
+              <a mdbBtn color="white" outline="true" class="wow fadeInDown waves-light" data-wow-delay="0.4s" mdbWavesEffect>About me</a>
+
             </div>
           </div>
         </div>
@@ -48,10 +100,3 @@
     </div>
   </div>
 </header>
-<button mat-mini-fab [ngStyle]="{'background': 'rgb(66, 103, 178'}" routerLink="/home">
-<mat-icon>facebook</mat-icon>
-</button>
-<button mat-mini-fab [ngStyle]="{'background': 'rgb(219, 68, 55'}" routerLink="/home">
-<mat-icon>email</mat-icon>
-</button>
-    <!-- [formGroup]="productForm" style="display: flex; flex-direction: column; padding: 20px;" -->
