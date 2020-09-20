@@ -12,12 +12,21 @@ export class AuthService {
 
   onLoginGoogle() : void{
     this.authfire.signInWithPopup(new auth.GoogleAuthProvider());
+    
     if(this.authfire.user){
       this.router.navigate(['/home']);
     }
   }
 
-  onLogoutGoogle() : void{
+  onLoginFacebook() : void{
+    this.authfire.signInWithPopup(new auth.FacebookAuthProvider());
+    
+    if(this.authfire.user){
+      this.router.navigate(['/home']);
+    }
+  }
+
+  onLogout() : void{
     this.authfire.signOut();
   }
 }
