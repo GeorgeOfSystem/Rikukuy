@@ -1,8 +1,5 @@
-.mat-label{
-  background-color: whitesmoke;
-}
 .mat-form-field{
-  background-color: whitesmoke;
+  background-color: rgb(50, 74, 122);
 }
 .mat-raised-button{
   color: whitesmoke;
