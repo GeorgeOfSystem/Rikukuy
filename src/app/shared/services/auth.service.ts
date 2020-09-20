@@ -10,6 +10,13 @@ export class AuthService {
    constructor(public authfire : AngularFireAuth ) {
   }
 
+  onRegister(email, password) : any {
+    return new Promise((resolve, reject) => {
+      this.authfire.createUserWithEmailAndPassword(email,password).then(userData => resolve(userData),
+      err=>(reject(err)));
+    });
+  }
+
   onLoginEmail(email : string, password : string) : any {
     return new Promise((resolve, reject) => {
       this.authfire.signInWithEmailAndPassword(email,password).then(userData => resolve(userData),

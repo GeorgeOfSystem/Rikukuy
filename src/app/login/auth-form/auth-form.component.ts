@@ -5,7 +5,48 @@ import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'auth-form',
-  templateUrl: './auth-form.component.html',
+  template: `
+  <form [formGroup]="userForm">
+  <div style="display: flex; flex-direction: column; padding: 20px;">
+    <!-- Email -->
+    <mat-form-field >
+      <mat-label > Email </mat-label>
+      <input matInput formControlName="email" type="text">
+    </mat-form-field>
+    <!-- Email verification -->
+    <div *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty)" class="alert alert-danger">
+      <div *ngIf="userForm.get('email').errors.required">
+          Email is required
+      </div>
+    </div>
+    <!-- Password -->
+    <mat-form-field >
+      <mat-label > Password </mat-label>
+      <input matInput formControlName="password" type="password">
+    </mat-form-field>
+    <!-- Password verification -->
+    <div *ngIf="userForm.get('password').invalid && (userForm.get('password').touched || userForm.get('password').dirty)" class="alert alert-danger">
+      <div *ngIf="userForm.get('password').errors.required">
+        Password is required
+      </div>
+    </div>
+  <button mat-raised-button [ngStyle]="{'background': 'rgb(21, 87, 35)'}" (click)="onRegister()" >
+    Register
+  </button>
+  </div>
+  <!-- Email -->
+  <button mat-raised-button [ngStyle]="{'background': 'rgb(21, 87, 35)'}" (click)="onLoginEmail()" >
+    Email
+  </button>
+  <!-- facebook button -->
+  <button mat-raised-button [ngStyle]="{'background': 'rgb(66, 103, 178)'}" (click)="onloginFacebook()" >
+    Facebook
+  </button>
+  <!-- Google button -->
+  <button mat-raised-button [ngStyle]="{'background': 'rgb(219, 68, 55)'}" (click)="onloginGoogle()">
+    Google
+  </button>
+</form>`,
   styleUrls: ['./auth-form.component.css']
 })
 export class AuthFormComponent implements OnInit {
@@ -18,6 +59,14 @@ export class AuthFormComponent implements OnInit {
       email:[ '', Validators.required ],
       password:[ '', Validators.required ]
     });
+  }
+
+  onRegister() : void {
+    console.log('New user', this.userForm.value)
+    this.auth.onRegister( this.userForm.value.email,this.userForm.value.password).then(res => {
+      console.log('userRes', res);
+      this.onLoginEmail();
+    }).catch(err => console.log('Error', err));
   }
 
   onLoginEmail(): void {

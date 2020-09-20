@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './loginComponent/login.component';
-import { LoginRoutingModule } from './login-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,13 +10,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { AuthFormComponent } from './auth-form/auth-form.component';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [
+  { path: '', component: LoginComponent}
+];
 
 @NgModule({
   imports: [
     CommonModule,
-    LoginRoutingModule,
     MatButtonModule,
     HttpClientModule,
     MatIconModule,
@@ -27,6 +28,7 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [LoginComponent, AuthFormComponent]
 })
