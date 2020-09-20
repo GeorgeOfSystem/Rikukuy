@@ -9,7 +9,6 @@ import { AuthService } from '../../shared/services/auth.service';
   styleUrls: ['./auth-form.component.css']
 })
 export class AuthFormComponent implements OnInit {
-
   userForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder, private auth : AuthService, private router : Router) { }
