@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
+import { AuthFormComponent } from './auth-form/auth-form.component';
 
 
 
@@ -27,6 +28,6 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent, AuthFormComponent]
 })
 export class LoginModule { }

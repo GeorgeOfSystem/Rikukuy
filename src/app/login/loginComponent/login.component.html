@@ -1,34 +1,5 @@
-
 <!--Main Navigation-->
 <header class="intro-header">
-
-  <!--Navbar-->
-  <!--
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
-    <mdb-navbar-brand>
-      <a class="logo navbar-brand waves-light" mdbWavesEffect href="#"><strong>MDB</strong></a>
-    </mdb-navbar-brand>
-    <links>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active waves-light" mdbWavesEffect>
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link" href="#">Profile</a>
-        </li>
-      </ul>
-      <form class="form-inline waves-light" mdbWavesEffect>
-        <div class="md-form mt-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        </div>
-      </form>
-    </links>
-  </mdb-navbar>
-  -->
-
   <!-- Intro Section -->
   <div class="view jarallax" data-jarallax='{"speed": 0.2}'>
     <div class="full-bg-img mask rgba-black-light">
@@ -48,47 +19,7 @@
               
               <div class="example-sidenav-content">
                 <mat-drawer #drawer style="width: 300px; height: 100%;" mode="side" [position]="'end'">
-                  <form [formGroup]="userForm">
-                  <div style="display: flex; flex-direction: column; padding: 20px;">
-                    <!-- Email -->
-                    <mat-form-field>
-                      <mat-label> Email </mat-label>
-                      <input matInput formControlName="email" type="text">
-                    </mat-form-field>
-                    <!-- Email verification -->
-                    <div *ngIf="userForm.get('email').invalid && (userForm.get('email').touched || userForm.get('email').dirty)" class="alert alert-danger">
-                      <div *ngIf="userForm.get('email').errors.required">
-                        Email is required
-                      </div>
-                    </div>
-
-                    <!-- Password -->
-                    <mat-form-field>
-                        <mat-label > Password </mat-label>
-                        <input matInput formControlName="password" type="password">
-                    </mat-form-field>
-                    <!-- Password verification -->
-                    <div *ngIf="userForm.get('password').invalid &&
-                              (userForm.get('password').touched ||
-                              userForm.get('password').dirty)"
-                          class="alert alert-danger">
-                      <div *ngIf="userForm.get('password').errors.required">
-                          Password is required
-                      </div>
-                    </div>
-                  </div>
-                  <button mat-mini-fab [ngStyle]="{'background': 'rgb(66, 103, 178'}" (click)="onLoginEmail()" >
-                    <mat-icon>facebook</mat-icon>
-                  </button>
-                  <!-- facebook button -->
-                  <button mat-mini-fab [ngStyle]="{'background': 'rgb(66, 103, 178'}" (click)="onloginFacebook()" >
-                    <mat-icon>facebook</mat-icon>
-                  </button>
-                  <!-- Google button -->
-                  <button mat-mini-fab [ngStyle]="{'background': 'rgb(219, 68, 55'}" (click)="onloginGoogle()">
-                    <mat-icon>email</mat-icon>
-                  </button>
-                  </form>
+                  <auth-form></auth-form>
                 </mat-drawer>
               </div>
 
