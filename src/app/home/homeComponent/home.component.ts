@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 
@@ -9,13 +10,24 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth : AuthService, private router : Router) { }
+  constructor(private auth : AuthService,private authFire : AngularFireAuth , private router : Router) { }
 
-  ngOnInit() {
+  ngOnInit() : void {
+    this.getCurrentUser();
   }
 
   onLogout() : void{
     this.auth.onLogout();
     this.router.navigate(['/login'])
+  }
+
+  getCurrentUser() : void {
+    this.auth.isAuth().subscribe( auth => {
+      if(auth){
+        console.log('user logged');
+      }else{
+        console.log('Not user logged');
+      }
+    });
   }
 }

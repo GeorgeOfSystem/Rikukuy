@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { async } from '@angular/core/testing';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { auth } from 'firebase/app';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -12,23 +12,36 @@ export class AuthService {
 
   onLoginGoogle() : void{
     this.authfire.signInWithPopup(new auth.GoogleAuthProvider());
-    
-    if(this.authfire.user){
-      this.router.navigate(['/home']);
-    }
+    this.isAuth().subscribe( auth => {
+      if(auth){
+        console.log('user logged');
+        this.router.navigate(['/home']);
+      }else{
+        console.log('Not user logged');
+      }
+    });
   }
 
   onLoginFacebook() : void{
     this.authfire.signInWithPopup(new auth.FacebookAuthProvider());
-    
-    if(this.authfire.user){
-      this.router.navigate(['/home']);
-    }
+    this.isAuth().subscribe( auth => {
+      if(auth){
+        console.log('user logged');
+        this.router.navigate(['/home']);
+      }else{
+        console.log('Not user logged');
+      }
+    });
   }
 
   onLogout() : void{
     this.authfire.signOut();
   }
+
+  isAuth() : any {
+    return this.authfire.authState.pipe(map(auth => auth))
+  }
+
 }
 /*<div *ngIf="auth.user | async as user; else showLogin">
       <h1>Hello {{ user.displayName }}!</h1>
