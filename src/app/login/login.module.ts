@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
   ],
+  providers:[AuthentificationService],
   declarations: [LoginComponent]
 })
 export class LoginModule { }
