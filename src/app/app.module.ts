@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AuthService } from './shared/services/auth.service';
+
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
@@ -26,7 +28,10 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers:[AngularFireAuth],
+  providers:[
+    AngularFireAuth,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
