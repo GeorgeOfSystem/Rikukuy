@@ -7,39 +7,30 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AuthService {
 
-   constructor(public authfire : AngularFireAuth, private router : Router ) {
+   constructor(public authfire : AngularFireAuth ) {
   }
 
-  onLoginGoogle() : void{
-    this.authfire.signInWithPopup(new auth.GoogleAuthProvider());
-    this.isAuth().subscribe( auth => {
-      if(auth){
-        console.log('user logged');
-        this.router.navigate(['/home']);
-      }else{
-        console.log('Not user logged');
-      }
+  onLoginEmail(email : string, password : string) : any {
+    return new Promise((resolve, reject) => {
+      this.authfire.signInWithEmailAndPassword(email,password).then(userData => resolve(userData),
+      err=>(reject(err)));
     });
   }
 
-  onLoginFacebook() : void{
-    this.authfire.signInWithPopup(new auth.FacebookAuthProvider());
-    this.isAuth().subscribe( auth => {
-      if(auth){
-        console.log('user logged');
-        this.router.navigate(['/home']);
-      }else{
-        console.log('Not user logged');
-      }
-    });
+  onLoginGoogle() : any {
+    return this.authfire.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
-  onLogout() : void{
-    this.authfire.signOut();
+  onLoginFacebook() : any {
+    return this.authfire.signInWithPopup(new auth.FacebookAuthProvider());
   }
 
   isAuth() : any {
     return this.authfire.authState.pipe(map(auth => auth))
+  }
+
+  onLogout() : void{
+    this.authfire.signOut();
   }
 
 }
