@@ -73,18 +73,21 @@ export class AuthFormComponent implements OnInit {
     console.log('user', this.userForm.value)
     this.auth.onLoginEmail( this.userForm.value.email,this.userForm.value.password).then(res => {
       console.log('userRes', res);
+      this.auth.setUser(res.user);
       this.redirect();
     }).catch(err => console.log('Error', err));
   }
   onloginGoogle() {
     this.auth.onLoginGoogle().then(res => {
       console.log('userRes', res);
+      this.auth.setUser(res.user);
       this.redirect();
     }).catch(err => console.log('Error', err));
   }
   onloginFacebook() {
     this.auth.onLoginFacebook().then(res => {
       console.log('userRes', res);
+      this.auth.setUser(res.user);
       this.redirect();
     }).catch(err => console.log('Error', err));
   }

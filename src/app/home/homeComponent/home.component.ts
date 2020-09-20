@@ -9,25 +9,21 @@ import { AuthService } from '../../shared/services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  userLogged;
 
   constructor(private auth : AuthService,private authFire : AngularFireAuth , private router : Router) { }
 
   ngOnInit() : void {
-    this.getCurrentUser();
+    this.getUserlogged();
   }
 
   onLogout() : void{
     this.auth.onLogout();
     this.router.navigate(['/login'])
+    this.auth.setUser(null);
   }
 
-  getCurrentUser() : void {
-    this.auth.isAuth().subscribe( auth => {
-      if(auth){
-        console.log('user logged');
-      }else{
-        console.log('Not user logged');
-      }
-    });
+  getUserlogged() : void {
+    this.userLogged = this.auth.getUser;
   }
 }

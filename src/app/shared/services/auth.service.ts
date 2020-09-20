@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import { auth } from 'firebase/app';
 import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
+  userLogged;
 
    constructor(public authfire : AngularFireAuth ) {
+  }
+
+  setUser(user : any){
+    this.userLogged = user;
+  }
+
+  getUser() : any {
+    return this.userLogged;
   }
 
   onRegister(email, password) : any {
