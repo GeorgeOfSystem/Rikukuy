@@ -2,12 +2,19 @@
   height: unset !important;
   background-color: rgb(48, 47, 47);
 }
+
 .top-nav-collapse {
   background-color: #78909c !important;
 }
 .view {
   height: 100vh !important;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/nicole-george.appspot.com/o/mirador2.jpeg?alt=media&token=ceaec82e-b6a4-4350-929f-aa12ed7fba4d);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center ;
 }
+
+
 .navbar:not(.top-nav-collapse) {
   background: transparent !important;
 }
@@ -16,6 +23,7 @@
     background: #78909c !important;
   }
 }
+
 h1 {
   letter-spacing: 8px;
 }
@@ -38,3 +46,15 @@ h5 {
     height: 700px;
   }
 }
+
+/*.box img{
+  width: 100%;
+  height: auto;
+}
+@supports(object-fit: cover){
+    .box img{
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}*/

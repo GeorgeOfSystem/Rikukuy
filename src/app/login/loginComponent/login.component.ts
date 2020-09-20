@@ -25,14 +25,27 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  onLoginEmail(): void {
+    console.log('user', this.userForm.value)
+    this.auth.onLoginEmail( this.userForm.value.email,this.userForm.value.password).then(res => {
+      console.log('userRes', res);
+      this.redirect();
+    }).catch(err => console.log('Error', err));
+  }
   onloginGoogle() {
     this.auth.onLoginGoogle().then(res => {
-      this.router.navigate(['/home']);
+      console.log('userRes', res);
+      this.redirect();
     }).catch(err => console.log('Error', err));
   }
   onloginFacebook() {
     this.auth.onLoginFacebook().then(res => {
-      this.router.navigate(['/home']);
-    }).catch(err => console.log('Error', err));;
+      console.log('userRes', res);
+      this.redirect();
+    }).catch(err => console.log('Error', err));
+  }
+
+  redirect() : void {
+    this.router.navigate(['/home']);
   }
 }
