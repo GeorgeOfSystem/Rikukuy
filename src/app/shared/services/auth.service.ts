@@ -5,17 +5,9 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  userLogged;
+  public userLogged;
 
    constructor(public authfire : AngularFireAuth ) {
-  }
-
-  setUser(user : any){
-    this.userLogged = user;
-  }
-
-  getUser() : any {
-    return this.userLogged;
   }
 
   onRegister(email, password) : any {
@@ -49,11 +41,3 @@ export class AuthService {
   }
 
 }
-/*<div *ngIf="auth.user | async as user; else showLogin">
-      <h1>Hello {{ user.displayName }}!</h1>
-      <button (click)="logout()">Logout</button>
-</div>
-<ng-template #showLogin>
-  <p>Please login.</p>
-  <button (click)="onloginGoogle()">Login with Google</button>
-</ng-template>*/

@@ -30,12 +30,12 @@ import { AuthService } from '../../shared/services/auth.service';
         Password is required
       </div>
     </div>
-  <button mat-raised-button [ngStyle]="{'background': 'rgb(21, 87, 35)'}" (click)="onRegister()" >
+  <button mat-raised-button [ngStyle]="{'background': 'rgba(7, 231, 93, 0.712)'}" (click)="onRegister()" >
     Register
   </button>
   </div>
   <!-- Email -->
-  <button mat-raised-button [ngStyle]="{'background': 'rgb(21, 87, 35)'}" (click)="onLoginEmail()" >
+  <button mat-raised-button [ngStyle]="{'background': 'rgba(7, 231, 93, 0.712)'}" (click)="onLoginEmail()" >
     Email
   </button>
   <!-- facebook button -->
@@ -73,21 +73,21 @@ export class AuthFormComponent implements OnInit {
     console.log('user', this.userForm.value)
     this.auth.onLoginEmail( this.userForm.value.email,this.userForm.value.password).then(res => {
       console.log('userRes', res);
-      this.auth.setUser(res.user);
+      this.auth.userLogged=res.user;
       this.redirect();
     }).catch(err => console.log('Error', err));
   }
   onloginGoogle() {
     this.auth.onLoginGoogle().then(res => {
       console.log('userRes', res);
-      this.auth.setUser(res.user);
+      this.auth.userLogged=res.user;
       this.redirect();
     }).catch(err => console.log('Error', err));
   }
   onloginFacebook() {
     this.auth.onLoginFacebook().then(res => {
       console.log('userRes', res);
-      this.auth.setUser(res.user);
+      this.auth.userLogged=res.user;
       this.redirect();
     }).catch(err => console.log('Error', err));
   }

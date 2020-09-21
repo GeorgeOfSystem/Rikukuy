@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <button mat-mini-fab style="background-image: url({{userLogged.photoURL}});"></button>
+  <button mat-mini-fab icon-profile style="background-image: url({{userLogged.photoURL}}); background-repeat: no-repeat; background-size: cover; background-position: center;"></button>
   <a class="navbar-brand" href="#">NICOLE & GEORGE WEBSITE</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -26,3 +26,4 @@
     <button (click)="onLogout()"> LOGOUT </button>
   </div>
 </nav>
+user = {{ userLogged.photoURL | json }}

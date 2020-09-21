@@ -9,21 +9,17 @@ import { AuthService } from '../../shared/services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  userLogged;
+  userLogged = this.auth.userLogged;
 
   constructor(private auth : AuthService,private authFire : AngularFireAuth , private router : Router) { }
 
   ngOnInit() : void {
-    this.getUserlogged();
+    console.log('home',this.userLogged);
   }
 
   onLogout() : void{
     this.auth.onLogout();
     this.router.navigate(['/login'])
-    this.auth.setUser(null);
-  }
-
-  getUserlogged() : void {
-    this.userLogged = this.auth.getUser;
+    this.auth.userLogged=null;
   }
 }
